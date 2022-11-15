@@ -13,6 +13,10 @@ cd Group-Project-2-BE-5
 ```
 
 ```bash
+git checkout -b <your_feature_branch>
+```
+
+```bash
 npm install
 ```
 
@@ -24,8 +28,20 @@ cp .env.example .env
 npm run dev
 ```
 
-DON't FORGET YOUR COFFEE
-<br>
-AND GO DEVELOP
+MAKE SOME CHANGE
+
+```bash
+git add .
+```
+
+```bash
+git commit -m <message>
+```
+
+```bash
+git push origin <your_feature_branch>
+```
+
+> DON't FORGET TO GET SOME COFFEE
 
 ~ BE-5 2022
