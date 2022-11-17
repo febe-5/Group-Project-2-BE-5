@@ -37,16 +37,18 @@ module.exports = {
         try {
             const { nama_psikolog, no_telp, pengalaman, jadwal, harga, layanan} = req.body
 
-            const newDataPsikolog = {
+            const newDataPsikolog = new Psikolog ({
                 nama_psikolog,
                 no_telp,
                 pengalaman,
                 jadwal,
                 harga,
-                layanan
-            }
+                layanan: layanan._id
+            })
 
-            const newPsikolog = await Psikolog.save(newDataPsikolog)
+            const newPsikolog = await newDataPsikolog.save()
+            const updateLayanan = await Layanan.updateMany({ '_id': newPsikolog.layanan}, { $addToSet: { layanan: newPsikolog._id } })
+            console.log(updateLayanan)
             console.log(newPsikolog)
 
             res.status(201).send({
@@ -63,14 +65,15 @@ module.exports = {
     updatePsikolog: async (req, res) => {
         try {
             const { id } = req.params
-            const { nama_psikolog, no_telp, pengalaman, jadwal, harga } = req.body
+            const { nama_psikolog, no_telp, pengalaman, jadwal, harga, layanan } = req.body
 
             const updatePsikolog = {
                 nama_psikolog,
                 no_telp,
                 pengalaman,
                 jadwal,
-                harga
+                harga,
+                layanan
             }
 
             const update = await Psikolog.findByIdAndUpdate(id, updatePsikolog).exec();
@@ -100,4 +103,18 @@ module.exports = {
             })
         }
     },
+
+    deleteAllPsikolog: async (req, res) => {
+        try {
+            const deleteAll = await Psikolog.deleteMany({});
+            res.status(200).send({
+                message: "Delete All Psikolog Successfully",
+                data: deleteAll
+            })
+        } catch (err) {
+            res.status(500).send({
+                message: err.message || "Internal Server Error",
+            })
+        }
+    }
 }
