@@ -71,9 +71,6 @@ module.exports = {
 		try {
 			const user = await User.findOne({ _id }, "-password");
 
-			if (!user)
-				return res.status(404).send({ status: "fail", msg: "user not found" });
-
 			res.send({ status: "success", msg: "user found", data: user });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
