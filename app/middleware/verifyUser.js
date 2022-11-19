@@ -5,12 +5,11 @@ module.exports = async (req, res, next) => {
 
 	try {
 		const user = await User.findOne({ _id });
-		if (!user)
-			return res.status(403).send({ status: "fail", msg: "unauthorized" });
+
 		if (!user.isAdmin)
 			return res
 				.status(403)
-				.send({ status: "fail", msg: "you're not an admin at all" });
+				.send({ status: "fail", msg: "user tidak memiliki akses" });
 
 		next();
 	} catch (error) {

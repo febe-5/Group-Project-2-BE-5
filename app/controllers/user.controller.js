@@ -17,7 +17,7 @@ module.exports = {
 		if (emailExist)
 			return res
 				.status(400)
-				.send({ status: "fail", msg: "Email already exists" });
+				.send({ status: "fail", msg: "Email sudah digunakan" });
 
 		const salt = await bcrypt.genSalt(10);
 		const hashPassword = await bcrypt.hash(password, salt);
@@ -31,9 +31,7 @@ module.exports = {
 
 		try {
 			await user.save();
-			res
-				.status(201)
-				.send({ status: "success", msg: "user created successfully" });
+			res.status(201).send({ status: "success", msg: "akun berhasil dibuat" });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -51,16 +49,20 @@ module.exports = {
 
 		const user = await User.findOne({ email });
 		if (!user)
-			return res.status(404).send({ status: "fail", msg: "user not found" });
+			return res
+				.status(404)
+				.send({ status: "fail", msg: "user tidak ditemukan" });
 
 		const validPass = await bcrypt.compare(password, user.password);
 		if (!validPass)
-			return res.status(400).send({ status: "fail", msg: "wrong password!" });
+			return res
+				.status(400)
+				.send({ status: "fail", msg: "password yang dimasukkan salah!" });
 
 		const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
 		res.send({
 			status: "success",
-			msg: "user logged in successfully",
+			msg: "user berhasil login",
 			accessToken: token,
 		});
 	},
@@ -71,7 +73,7 @@ module.exports = {
 		try {
 			const user = await User.findOne({ _id }, "-password");
 
-			res.send({ status: "success", msg: "user found", data: user });
+			res.send({ status: "success", msg: "user ditemukan", data: user });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -97,7 +99,7 @@ module.exports = {
 			};
 
 			await User.findOneAndUpdate({ _id }, { ...data });
-			res.send({ status: "success", msg: "profile updated successfully" });
+			res.send({ status: "success", msg: "profil berhasil diperbarui" });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -106,7 +108,11 @@ module.exports = {
 	getAllUser: async (req, res) => {
 		try {
 			const users = await User.find({}, "-password");
-			res.send({ status: "success", msg: "all users found", data: users });
+			res.send({
+				status: "success",
+				msg: "semua user berhasil ditemukan",
+				data: users,
+			});
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -118,9 +124,15 @@ module.exports = {
 			const user = await User.findOne({ _id: id }, "-password");
 
 			if (!user)
-				return res.status(404).send({ status: "fail", msg: "user not found" });
+				return res
+					.status(404)
+					.send({ status: "fail", msg: "user tidak ditemukan" });
 
-			res.send({ status: "success", msg: "user found", data: user });
+			res.send({
+				status: "success",
+				msg: "user berhasil ditemukan",
+				data: user,
+			});
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -132,15 +144,17 @@ module.exports = {
 		if (!req.body)
 			return res
 				.status(400)
-				.send({ status: "fail", msg: "body can't be empty" });
+				.send({ status: "fail", msg: "request body tidak boleh kosong" });
 
 		try {
 			const checker = await User.findOne({ _id });
 			if (!checker)
-				return res.status(404).send({ status: "fail", msg: "user not found" });
+				return res
+					.status(404)
+					.send({ status: "fail", msg: "user tidak ditemukan" });
 
 			await User.findOneAndUpdate({ _id }, { ...req.body });
-			res.send({ status: "success", msg: "user updated successfully" });
+			res.send({ status: "success", msg: "data user berhasil diperbarui" });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -152,10 +166,12 @@ module.exports = {
 		try {
 			const checker = await User.findOne({ _id });
 			if (!checker)
-				return res.status(404).send({ status: "fail", msg: "user not found" });
+				return res
+					.status(404)
+					.send({ status: "fail", msg: "user tidak ditemukan" });
 
 			await User.deleteOne({ _id });
-			res.send({ status: "success", msg: "user deleted successfully" });
+			res.send({ status: "success", msg: "user berhasil dihapus" });
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
