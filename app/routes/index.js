@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   res.send("hello from express");
 });
 
-router.use("/metode", metode);
-router.use("/pembayaran", pembayaran);
+router.use("/metode", verifyToken, verifyUser, metode);
+router.use("/pembayaran", verifyToken, verifyUser, pembayaran);
 
 module.exports = router;

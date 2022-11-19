@@ -9,7 +9,7 @@ const pembayaranSchema = new Schema({
   },
   id_user: {
     type: mongoose.ObjectId,
-    ref: "user",
+    ref: "users",
   },
   jadwal: String,
   id_metode: {
