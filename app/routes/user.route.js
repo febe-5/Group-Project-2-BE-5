@@ -22,14 +22,12 @@ const {
 router.post("/register", registerValidation, register);
 router.post("/login", loginValidation, login);
 
-router.use(verifyToken);
-router.get("/profile", getProfile);
-router.put("/profile", updateProfile);
+router.get("/profile", verifyToken, getProfile);
+router.put("/profile", verifyToken, updateProfile);
 
-router.use(verifyUser);
-router.get("/users", getAllUser);
-router.get("/users/:id", getUser);
-router.put("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+router.get("/users", verifyToken, verifyUser, getAllUser);
+router.get("/users/:id", verifyToken, verifyUser, getUser);
+router.put("/users/:id", verifyToken, verifyUser, updateUser);
+router.delete("/users/:id", verifyToken, verifyUser, deleteUser);
 
 module.exports = router;

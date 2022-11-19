@@ -11,7 +11,7 @@ module.exports = {
 				.send({ status: "fail", msg: err.replace(/"/g, "") });
 		}
 
-		const { nama, email, password, umur } = req.body;
+		const { nama, email, password, umur, isAdmin = false } = req.body;
 
 		const emailExist = await User.findOne({ email });
 		if (emailExist)
@@ -27,6 +27,7 @@ module.exports = {
 			email,
 			umur,
 			password: hashPassword,
+			isAdmin,
 		});
 
 		try {
@@ -95,11 +96,14 @@ module.exports = {
 				nama: req.body.nama || oldUser.nama,
 				email: req.body.email || oldUser.email,
 				password: hashPassword || oldUser.password,
-				umur: req.body.umur || oldUser.password,
+				umur: req.body.umur || oldUser.umur,
 			};
 
-			await User.findOneAndUpdate({ _id }, { ...data });
-			res.send({ status: "success", msg: "profil berhasil diperbarui" });
+			const user = await User.findOneAndUpdate({ _id }, { ...data });
+			res.send({
+				status: "success",
+				msg: "profil berhasil diperbarui",
+			});
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}
@@ -153,8 +157,12 @@ module.exports = {
 					.status(404)
 					.send({ status: "fail", msg: "user tidak ditemukan" });
 
-			await User.findOneAndUpdate({ _id }, { ...req.body });
-			res.send({ status: "success", msg: "data user berhasil diperbarui" });
+			const user = await User.findOneAndUpdate({ _id }, { ...req.body });
+			res.send({
+				status: "success",
+				msg: "data user berhasil diperbarui",
+				data: user,
+			});
 		} catch (error) {
 			res.status(500).send({ status: "fail", msg: error.message });
 		}

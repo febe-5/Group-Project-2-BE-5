@@ -1,18 +1,23 @@
 const router = require("express").Router();
+
+const verifyToken = require("../middleware/verifyToken");
+const verifyUser = require("../middleware/verifyUser");
+
 const {
-  getAllPembayaran,
-  getPembayaranByID,
-  postPembayaran,
-  delPembayaranByID,
-  delAllPembayaran,
-  updatePembayaranById,
+	getAllPembayaran,
+	getPembayaranByID,
+	postPembayaran,
+	delPembayaranByID,
+	delAllPembayaran,
+	updatePembayaranById,
 } = require("../controllers/pembayaran.controller");
 
-router.get("/", getAllPembayaran);
-router.get("/:id", getPembayaranByID);
-router.post("/", postPembayaran);
-router.put("/:id", updatePembayaranById);
-router.delete("/:id", delPembayaranByID);
-router.delete("/", delAllPembayaran);
+router.post("/pembayaran", verifyToken, postPembayaran);
+router.get("/pembayaran/:id", verifyToken, getPembayaranByID);
+router.put("/pembayaran/:id", verifyToken, updatePembayaranById);
+router.delete("/pembayaran/:id", verifyToken, delPembayaranByID);
+
+router.get("/pembayaran", verifyToken, verifyUser, getAllPembayaran);
+router.delete("/pembayaran", verifyToken, verifyUser, delAllPembayaran);
 
 module.exports = router;
