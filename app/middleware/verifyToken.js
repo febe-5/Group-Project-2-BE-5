@@ -2,15 +2,19 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
 module.exports = async (req, res, next) => {
-	const token =
-		req.headers.authorization.split(" ")[1] || req.headers.authorization;
-
-	if (!token)
-		return res
-			.status(403)
-			.send({ status: "fail", msg: "user tidak memiliki akses" });
-
 	try {
+		if (!req.headers.authorization)
+			return res
+				.status(403)
+				.send({ status: "fail", msg: "user tidak memiliki akses" });
+
+		const token =
+			req.headers.authorization.split(" ")[1] || req.headers.authorization;
+
+		if (!token)
+			return res
+				.status(403)
+				.send({ status: "fail", msg: "user tidak memiliki akses" });
 		const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
 		if (!decoded)
