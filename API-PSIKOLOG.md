@@ -2,8 +2,8 @@
 
 Request :
 
-  - Method : POST
-  - Endpoint : /psikolog
+  - Method : ```POST```
+  - Endpoint : ```/psikolog```
   - Header : 
 
     - Content-Type : application/json
@@ -11,7 +11,7 @@ Request :
     - Authorization : token
   
   - Body:
-```
+```json
 {
     "nama_psikolog" : "string",
     "no_telp" : "string",
@@ -25,7 +25,7 @@ Request :
 ```
 
 Response : 
-```
+```json
 {
     "status": "string",
     "message": "string",
@@ -47,14 +47,14 @@ Response :
 
 Request :
 
-  - Method : GET
-  - Endpoint : /psikolog/{id}
+  - Method : ```GET```
+  - Endpoint : ```/psikolog/{id}```
   - Header : 
     
     - Accept: application/json
 
 Response :
-```
+```json
 {
     "status": "string",
     "message": "string",
@@ -83,15 +83,16 @@ Response :
 
 Request : 
 
-  - Method : PUT
-  - Endpoint : psikolog/{id}
-  - Hedaer : 
+  - Method : ```PUT```
+  - Endpoint : ```psikolog/{id}```
+  - Header : 
+
     - Content-Type: application/json
     - Accept: application/json
     - Authorization: token
 
   - Body:
-```
+```json
 {
     "nama_psikolog" : "string",
     "no_telp" : "string",
@@ -106,7 +107,7 @@ Request :
 
 Response: 
 
-```
+```json
 {
     "status": "string",
     "message": "string",
@@ -129,14 +130,15 @@ Response:
 
 Request : 
   
-  - Method : GET
-  - Endpoint : /psikolog
+  - Method : ```GET```
+  - Endpoint : ```/psikolog```
   - Header : 
+
     - Accept: application/json
 
 Response : 
 
-```
+```json
 {
     "status": "string",
     "message": "string",
@@ -185,14 +187,15 @@ Response :
 
 Request : 
   
-  - Method : DELETE
-  - Endpoint : /psikolog/{id}
+  - Method : ```DELETE```
+  - Endpoint : ```/psikolog/{id}```
   - Header : 
+
     - Accept: application/json
     - Authorization: token
 
 Response :
-```
+```json
 {
     "status": "string",
     "message": "string"
@@ -203,14 +206,15 @@ Response :
 
 Request :
   
-  - Method : DELETE
-  - Endpoint : /psikolog/{id}
+  - Method : ```DELETE```
+  - Endpoint : ```/psikolog/{id}```
   - Header : 
+  
     - Accept: application/json
     - Authorization: token
 
 Response :
-```
+```json
 {
     "status": "string",
     "message": "string",
