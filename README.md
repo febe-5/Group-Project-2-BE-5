@@ -537,9 +537,9 @@ Request :
 
 ```json
 {
-  "id_psikolog": "ObjectId("string")",
-  "jadwal": "string",
-  "id_metode": "ObjectId("string")"
+	"id_psikolog": "ObjectId('string')",
+	"jadwal": "string",
+	"id_metode": "ObjectId('string')"
 }
 ```
 
@@ -596,9 +596,9 @@ Request :
 
 ```json
 {
-  "id_psikolog": "ObjectId("string")",
-  "jadwal": "string",
-  "id_metode": "ObjectId("string")"
+	"id_psikolog": "ObjectId('string')",
+	"jadwal": "string",
+	"id_metode": "ObjectId('string')"
 }
 ```
 
