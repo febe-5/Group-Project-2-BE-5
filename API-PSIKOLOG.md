@@ -52,7 +52,6 @@ Request :
   - Header : 
     
     - Accept: application/json
-    - Authorization: token
 
 Response :
 ```
@@ -134,7 +133,6 @@ Request :
   - Endpoint : /psikolog
   - Header : 
     - Accept: application/json
-    - Authorization: token
 
 Response : 
 
@@ -182,3 +180,44 @@ Response :
     ]
 }
 ```
+
+## Delete Get Psikolog (Admin)
+
+Request : 
+  
+  - Method : DELETE
+  - Endpoint : /psikolog/{id}
+  - Header : 
+    - Accept: application/json
+    - Authorization: token
+
+Response :
+```
+{
+    "status": "string",
+    "message": "string"
+}
+```
+
+## Delete All Psikolog (Admin)
+
+Request :
+  
+  - Method : DELETE
+  - Endpoint : /psikolog/{id}
+  - Header : 
+    - Accept: application/json
+    - Authorization: token
+
+Response :
+```
+{
+    "status": "string",
+    "message": "string",
+    "data": {
+        "acknowledged": boolean,
+        "deletedCount": integer
+    }
+} 
+```
+
