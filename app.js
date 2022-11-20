@@ -11,11 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 db.then(() => console.log("database connected")).catch((error) =>
-  console.log(error.message)
+	console.log(error.message)
 );
 
-app.use(Allrouter);
+app.use("/api", Allrouter);
 
 app.listen(PORT, () => {
-  console.log("server running on http://localhost:" + PORT);
+	console.log("server running on http://localhost:" + PORT);
 });
