@@ -17,9 +17,9 @@ Request :
     "no_telp" : "string",
     "pengalaman" : "string",
     "jadwal" : "string",
-    "harga" : integer,
+    "harga" : "integer",
     "layanan" : {
-        "_id" : ObjectId("string")
+        "_id" : "string"
     }
 }
 ```
@@ -34,7 +34,7 @@ Response :
         "no_telp": "string",
         "pengalaman": "string",
         "jadwal": "string",
-        "harga": integer,
+        "harga": "integer",
         "layanan": [
             "_id": "string"
         ],
@@ -64,7 +64,7 @@ Response :
         "no_telp": "string",
         "pengalaman": "string",
         "jadwal": "string",
-        "harga": integer,
+        "harga": "integer",
         "layanan": [
             {
                 "_id": "string",
@@ -98,9 +98,9 @@ Request :
     "no_telp" : "string",
     "pengalaman" : "string",
     "jadwal" : "string",
-    "harga" : integer,
+    "harga" : "integer",
     "layanan" : {
-        "_id" : ObjectId("string")
+        "_id" : "string"
     }
 }
 ```
@@ -116,7 +116,7 @@ Response:
         "no_telp": "string",
         "pengalaman": "string",
         "jadwal": "string",
-        "harga": integer,
+        "harga": "integer",
         "layanan": [
             "_id": "string"
         ],
@@ -149,7 +149,7 @@ Response :
             "no_telp": "string",
             "pengalaman": "string",
             "jadwal": "string",
-            "harga": integer,
+            "harga": "integer",
             "layanan": [
                 {
                     "_id": "string",
@@ -167,7 +167,7 @@ Response :
             "no_telp": "string",
             "pengalaman": "string",
             "jadwal": "string",
-            "harga": integer,
+            "harga": "integer",
             "layanan": [
                 {
                     "_id": "string",
@@ -209,7 +209,7 @@ Request :
   - Method : ```DELETE```
   - Endpoint : ```/psikolog/{id}```
   - Header : 
-  
+
     - Accept: application/json
     - Authorization: token
 
@@ -219,8 +219,8 @@ Response :
     "status": "string",
     "message": "string",
     "data": {
-        "acknowledged": boolean,
-        "deletedCount": integer
+        "acknowledged": "boolean",
+        "deletedCount": "integer"
     }
 } 
 ```
