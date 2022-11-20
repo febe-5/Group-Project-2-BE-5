@@ -43,7 +43,7 @@ Response :
     }
 }
 ```
-## Get Psikolog (User, Admin)
+## Get Psikolog
 
 Request :
 
@@ -126,7 +126,7 @@ Response:
 }
 ```
 
-## List Psikolog (User, Admin)
+## List Psikolog
 
 Request : 
   
