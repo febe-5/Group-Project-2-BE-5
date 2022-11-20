@@ -82,7 +82,7 @@ Response :
 }
 ```
 
-## Show Profile (user, admin)
+## Get Profile (user, admin)
 
 Request :
 
@@ -99,6 +99,7 @@ Response :
 	"status": "string",
 	"message": "string",
 	"data": {
+		"_id": "string",
 		"nama": "string",
 		"email": "string",
 		"umur": "number"
@@ -153,6 +154,7 @@ Response :
 "message": "string",
 "data": [
   {
+		"_id": "string",
     "nama": "string",
     "email": "string",
     "umur": "number",
@@ -177,6 +179,7 @@ Response :
 "status": "string",
 "message": "string",
 "data": {
+		"_id": "string",
     "nama": "string",
     "email": "string",
     "umur": "number",
@@ -212,6 +215,7 @@ Response :
 "status": "string",
 "message": "string",
 "data": {
+		"_id": "string",
     "nama": "string",
     "email": "string",
     "umur": "number",
