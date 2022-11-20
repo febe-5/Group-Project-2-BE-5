@@ -19,5 +19,5 @@ db.then(() => console.log("database connected")).catch((error) =>
 app.use("/api", Allrouter);
 
 app.listen(PORT, () => {
-	console.log("server running on http://localhost:" + PORT);
+	console.log("server running on http://localhost:" + PORT + "/api");
 });
