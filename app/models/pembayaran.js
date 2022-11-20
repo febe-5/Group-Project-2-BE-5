@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
 const pembayaranSchema = new Schema({
@@ -14,7 +13,7 @@ const pembayaranSchema = new Schema({
   jadwal: String,
   id_metode: {
     type: mongoose.ObjectId,
-    ref: "Metode",
+    ref: "metode",
   },
 });
 
